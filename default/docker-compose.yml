@@ -123,8 +123,8 @@ services:
       SPRING_APPLICATION_NAME: "cards"
 #      SPRING_DATASOURCE_URL: jdbc:mysql://cardsdb:3306/cardsdb
     depends_on:
-      cardsdb:
-        condition: service_healthy
+#      cardsdb:
+#        condition: service_healthy
     extends:
       file: common-config.yml
       service: microservice-configserver-config
