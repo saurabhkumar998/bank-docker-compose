@@ -77,10 +77,7 @@ services:
       start_period: 10s
     extends:
       file: common-config.yml
-      service: microservice-base-config
-    depends_on:
-      configserver:
-        condition: service_healthy
+      service: microservice-configserver-config
     environment:
       SPRING_APPLICATION_NAME: "eurekaserver"
 
@@ -97,7 +94,7 @@ services:
 #        condition: service_healthy
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
+      service: microservice-eureka-config
 
   loans:
     image: "saurabhkumar18/loans:s8"
@@ -112,7 +109,7 @@ services:
 #        condition: service_healthy
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
+      service: microservice-eureka-config
 
   cards:
     image: "saurabhkumar18/cards:s8"
@@ -122,12 +119,12 @@ services:
     environment:
       SPRING_APPLICATION_NAME: "cards"
 #      SPRING_DATASOURCE_URL: jdbc:mysql://cardsdb:3306/cardsdb
-    depends_on:
+#    depends_on:
 #      cardsdb:
 #        condition: service_healthy
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
+      service: microservice-eureka-config
 
 networks:
   bank:
